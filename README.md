@@ -1,3 +1,2 @@
-# Mohaned Mohamed — AI Creative Portfolio
-
-Static animated portfolio for GitHub Pages.
+# Mohaned AI Creative Portfolio
+Optimized mobile/desktop GitHub Pages build.
