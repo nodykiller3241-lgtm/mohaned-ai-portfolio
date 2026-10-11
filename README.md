@@ -1,12 +1,7 @@
-Mohaned AI Portfolio — Mobile v10 Performance
+# Mohaned AI Creative — v11 Mobile Deck
 
-Key performance changes:
-- Mobile fast path skips the expensive full-deck animation/lightbox measurement pass.
-- Offscreen slides use CSS content-visibility so mobile browsers can skip layout/paint work.
-- Dedicated smaller mobile image files (m-img-XX.webp) are selected only on mobile; desktop still receives full-quality images.
-- Videos remain preload=none on mobile and do not download video data until playback.
-- Only viewport-near slides are warmed; media is no longer broadly prefetched on phones.
-- _headers is included for Netlify browser caching; GitHub Pages safely ignores it.
-
-For GitHub Pages: upload every file in this folder to the repository root.
-For Netlify: drag this whole folder into Netlify Drop.
+Architecture:
+- `index.html`: desktop deck; immediately routes phones to `mobile.html`.
+- `mobile.html`: one-slide virtual presentation with inline low-quality placeholders, progressive sharpening, swipe navigation, full-screen button, and lightweight slide-entry animation.
+- Mobile does not render all 25 slides at once and does not use IntersectionObserver for deck navigation.
+- Only the active slide requests full assets; the next slide is warmed after first paint.
