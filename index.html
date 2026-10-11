@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html data-theme="dark" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
@@ -155,12 +155,37 @@ html.mo .slide.in .mo-dot{animation:moDot 2.7s cubic-bezier(.45,.05,.4,1) .45s b
 #lb[data-single="1"] .lb-p, #lb[data-single="1"] .lb-n, #lb[data-single="1"] .lb-c{display:none}
 @media (prefers-reduced-motion: reduce){#lb, #lb img{transition:none}}
 
+
+/* mobile presentation mode */
+html,body{overflow-x:hidden}
+#fsbtn{position:fixed; right:max(14px,env(safe-area-inset-right)); bottom:max(14px,env(safe-area-inset-bottom)); z-index:1400; border:1px solid rgba(255,255,255,.22); background:rgba(12,12,12,.78); color:#fff; -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); height:48px; padding:0 17px; border-radius:999px; font:700 14px/1 Archivo,"Helvetica Neue",Arial,sans-serif; letter-spacing:.01em; display:none; align-items:center; gap:9px; box-shadow:0 10px 30px rgba(0,0,0,.35); cursor:pointer}
+#fsbtn svg{width:19px;height:19px;display:block}
+#fsbtn:active{transform:scale(.97)}
+#fsbtn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#fsnote{position:fixed; left:50%; bottom:76px; transform:translateX(-50%) translateY(8px); z-index:1399; background:rgba(12,12,12,.88); color:#fff; border:1px solid rgba(255,255,255,.16); padding:10px 14px; border-radius:12px; font:600 12px/1.25 Archivo,"Helvetica Neue",Arial,sans-serif; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .2s,transform .2s}
+#fsnote.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:900px){
+  :root{--bg:#000000;--page:#000000;--ink:#F4F4F0;--mute:#8D8D86;--rule:#2B2B28;--tile-line:#2B2B28}
+  html{scroll-snap-type:y mandatory;background:#000}
+  body{background:#000;overscroll-behavior-y:contain}
+  #deck{gap:0;padding:0;background:#000}
+  .slide{width:100vw!important;height:100svh!important;scroll-snap-align:start;scroll-snap-stop:always;background:#000}
+  .stage{left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:center center}
+  #rotate{position:fixed;top:0;left:0;right:0;z-index:1300;background:rgba(0,0,0,.86);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+  #fsbtn{display:flex}
+  html.immersive #rotate{display:none!important}
+}
+@media (max-width:900px) and (orientation:landscape){
+  #rotate{display:none!important}
+}
+
 @media print{html.mo .mo-el, html.mo .steps .step, html.mo .mo-glow{opacity:1 !important}}
 
 </style>
 <link as_="image" href="img-00.png" rel="preload"/><link as_="image" href="img-01.jpg" rel="preload"/><link as_="image" href="img-02.webp" rel="preload"/><link as_="image" href="img-03.jpg" rel="preload"/><link as_="image" href="img-04.jpg" rel="preload"/><link as_="image" href="img-05.jpg" rel="preload"/><link as_="image" href="img-06.jpg" rel="preload"/></head>
 <body>
 <div id="rotate" role="note">Rotate your phone for the best view.</div>
+<button id="fsbtn" type="button" aria-label="Open presentation full screen" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span>Full screen</span></button><div id="fsnote" role="status" aria-live="polite">Rotate to landscape for the best view</div>
 <main id="deck"><section aria-label="Cover" class="slide" style="background:#000; color:#F4F4F0"><div class="stage">
 <img alt="Mohaned Design logo" class="abs" data-k="0" src="img-00.png" style="left:96px; top:120px; width:330px; height:auto; border-radius:44px"/>
 <h1 class="h-xl abs" style="left:96px; top:470px; font-size:104px; line-height:.94">Mohaned<br/>Mohamed</h1>
@@ -376,11 +401,50 @@ Same source asset. Different campaign directions — product-focused, model-led 
 (function(){
   var root=document.documentElement;
   function fit(){
-    var w=Math.min(window.innerWidth, window.innerHeight*16/9);
-    root.style.setProperty('--w', w+'px');
-    root.style.setProperty('--s', (w/1920).toString());
+    var mobile=window.matchMedia && window.matchMedia('(max-width:900px)').matches;
+    if(mobile){
+      var s=Math.min(window.innerWidth/1920, window.innerHeight/1080);
+      root.style.setProperty('--w', window.innerWidth+'px');
+      root.style.setProperty('--s', s.toString());
+    }else{
+      var w=Math.min(window.innerWidth, window.innerHeight*16/9);
+      root.style.setProperty('--w', w+'px');
+      root.style.setProperty('--s', (w/1920).toString());
+    }
   }
   window.addEventListener('resize', fit); fit();
+
+  var fsbtn=document.getElementById('fsbtn'), fsnote=document.getElementById('fsnote');
+  function setFsLabel(on){
+    if(!fsbtn) return;
+    fsbtn.setAttribute('aria-pressed',on?'true':'false');
+    var sp=fsbtn.querySelector('span'); if(sp) sp.textContent=on?'Exit full screen':'Full screen';
+  }
+  function flashNote(msg){
+    if(!fsnote) return; fsnote.textContent=msg; fsnote.classList.add('show');
+    clearTimeout(flashNote.t); flashNote.t=setTimeout(function(){fsnote.classList.remove('show');},2200);
+  }
+  async function togglePresentation(){
+    var docEl=document.documentElement;
+    var on=!docEl.classList.contains('immersive');
+    docEl.classList.toggle('immersive',on); setFsLabel(on); fit();
+    if(on){
+      try{
+        if(!document.fullscreenElement && docEl.requestFullscreen){ await docEl.requestFullscreen({navigationUI:'hide'}); }
+      }catch(e){ flashNote('Presentation mode on — rotate to landscape'); }
+      try{ if(screen.orientation && screen.orientation.lock){ await screen.orientation.lock('landscape'); } }catch(e){}
+      setTimeout(function(){ go(current()); },80);
+    }else{
+      try{ if(document.fullscreenElement && document.exitFullscreen){ await document.exitFullscreen(); } }catch(e){}
+      try{ if(screen.orientation && screen.orientation.unlock){ screen.orientation.unlock(); } }catch(e){}
+    }
+  }
+  if(fsbtn) fsbtn.addEventListener('click',togglePresentation);
+  document.addEventListener('fullscreenchange',function(){
+    if(!document.fullscreenElement && document.documentElement.classList.contains('immersive')){
+      document.documentElement.classList.remove('immersive'); setFsLabel(false); fit();
+    }
+  });
 
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -549,7 +613,8 @@ Same source asset. Different campaign directions — product-focused, model-led 
     if(networkSheen && slide.contains(networkSheen)) setTimeout(function(){ networkSheen.classList.remove('run'); void networkSheen.offsetWidth; networkSheen.classList.add('run'); },1150);
   }
   if(motionOn){
-    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting) enter(x.target); }); },{threshold:0.3});
+    var mobileIO=window.matchMedia && window.matchMedia('(max-width:900px)').matches;
+    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting) enter(x.target); }); },{threshold:mobileIO?0.6:0.3});
     slides.forEach(function(s){ io.observe(s); });
     window.addEventListener('beforeprint',function(){ slides.forEach(function(s){ s.classList.add('in'); }); });
   }
