@@ -179,28 +179,43 @@ html,body{overflow-x:hidden}
   #rotate{display:none!important}
 }
 
+
+
+/* mobile safe-area + performance refinements */
+@media (max-width:900px){
+  #deck{padding:0!important;gap:0!important}
+  .slide{padding:0!important}
+  .stage{will-change:transform}
+  #fsbtn{left:50%;right:auto;transform:translateX(-50%);bottom:max(12px,env(safe-area-inset-bottom));height:46px;padding:0 16px}
+  #fsbtn:active{transform:translateX(-50%) scale(.97)}
+}
+@media (max-width:900px) and (orientation:landscape){
+  #fsbtn{width:46px;padding:0;justify-content:center;border-radius:50%}
+  #fsbtn span{display:none}
+}
+
 @media print{html.mo .mo-el, html.mo .steps .step, html.mo .mo-glow{opacity:1 !important}}
 
 </style>
-<link as_="image" href="img-00.png" rel="preload"/><link as_="image" href="img-01.jpg" rel="preload"/><link as_="image" href="img-02.webp" rel="preload"/><link as_="image" href="img-03.jpg" rel="preload"/><link as_="image" href="img-04.jpg" rel="preload"/><link as_="image" href="img-05.jpg" rel="preload"/><link as_="image" href="img-06.jpg" rel="preload"/></head>
+<link as="image" href="img-00.png" rel="preload"/><link as="image" href="img-01.webp" rel="preload"/><link as="image" href="img-02.webp" rel="preload"/><link as="image" href="img-03.webp" rel="preload"/><link as="image" href="img-04.webp" rel="preload"/><link as="image" href="img-05.webp" rel="preload"/><link as="image" href="img-06.webp" rel="preload"/></head>
 <body>
 <div id="rotate" role="note">Rotate your phone for the best view.</div>
-<button id="fsbtn" type="button" aria-label="Open presentation full screen" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span>Full screen</span></button><div id="fsnote" role="status" aria-live="polite">Rotate to landscape for the best view</div>
+<button aria-label="Open presentation full screen" aria-pressed="false" id="fsbtn" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg><span>Full screen</span></button><div aria-live="polite" id="fsnote" role="status">Rotate to landscape for the best view</div>
 <main id="deck"><section aria-label="Cover" class="slide" style="background:#000; color:#F4F4F0"><div class="stage">
-<img alt="Mohaned Design logo" class="abs" data-k="0" src="img-00.png" style="left:96px; top:120px; width:330px; height:auto; border-radius:44px"/>
+<img alt="Mohaned Design logo" class="abs" data-k="0" decoding="async" fetchpriority="high" loading="eager" src="img-00.png" style="left:96px; top:120px; width:330px; height:auto; border-radius:44px"/>
 <h1 class="h-xl abs" style="left:96px; top:470px; font-size:104px; line-height:.94">Mohaned<br/>Mohamed</h1>
 <p class="lead abs" style="left:100px; top:690px; color:#A6A6A0; font-size:34px">Graphic Designer × AI Creative</p>
 <p class="abs" style="left:96px; top:880px; margin:0; font-size:60px; font-weight:900; letter-spacing:-.03em; line-height:1">Selected AI work</p>
 <p class="abs" style="left:100px; top:958px; margin:0; font-size:24px; font-weight:500; color:#8D8D86">Portfolio 2026</p>
 <div class="abs" style="left:914px; top:50px; display:grid; grid-template-columns:repeat(3,290px); gap:20px"><a aria-label="Fashion / Branding: go to Vittorio project" class="cl" href="#vittorio">
 <figure class="card full">
-<img alt="Vittorio editorial motion cover" data-k="1" src="img-01.jpg"/>
+<img alt="Vittorio editorial motion cover" data-k="1" decoding="async" fetchpriority="high" loading="eager" src="img-01.webp"/>
 <span class="pill">Fashion / Branding</span>
 </figure>
-</a><a aria-label="Product Advertising: go to project" class="cl" href="#eins"><figure class="card full"><img alt="Best AI visual from the Product Advertising project" data-k="2" src="img-02.webp"/><span class="pill">Product Advertising</span></figure></a><a aria-label="Beauty Clinic: go to project" class="cl" href="#beauty"><figure class="card full"><img alt="Manuela Clinic beauty visual" data-k="3" src="img-03.jpg"/><span class="pill">Beauty Clinic</span></figure></a><a aria-label="Perfume / Luxury: go to project" class="cl" href="#sondos-intro"><figure class="card full"><img alt="Best AI visual from the Perfume / Luxury project" data-k="4" src="img-04.jpg"/><span class="pill">Perfume / Luxury</span></figure></a><a aria-label="Food Storytelling: go to project" class="cl" href="#food"><figure class="card full"><img alt="Best AI visual from the Food Storytelling project" data-k="5" src="img-05.jpg"/><span class="pill">Food Storytelling</span></figure></a><a aria-label="AI Video: go to project" class="cl" href="#ai-video"><figure class="card full"><img alt="Best AI visual from the AI Video project" data-k="6" src="img-06.jpg"/><span class="pill">AI Video</span></figure></a></div>
+</a><a aria-label="Product Advertising: go to project" class="cl" href="#eins"><figure class="card full"><img alt="Best AI visual from the Product Advertising project" data-k="2" decoding="async" fetchpriority="high" loading="eager" src="img-02.webp"/><span class="pill">Product Advertising</span></figure></a><a aria-label="Beauty Clinic: go to project" class="cl" href="#beauty"><figure class="card full"><img alt="Manuela Clinic beauty visual" data-k="3" decoding="async" fetchpriority="high" loading="eager" src="img-03.webp"/><span class="pill">Beauty Clinic</span></figure></a><a aria-label="Perfume / Luxury: go to project" class="cl" href="#sondos-intro"><figure class="card full"><img alt="Best AI visual from the Perfume / Luxury project" data-k="4" decoding="async" fetchpriority="high" loading="eager" src="img-04.webp"/><span class="pill">Perfume / Luxury</span></figure></a><a aria-label="Food Storytelling: go to project" class="cl" href="#food"><figure class="card full"><img alt="Best AI visual from the Food Storytelling project" data-k="5" decoding="async" fetchpriority="high" loading="eager" src="img-05.webp"/><span class="pill">Food Storytelling</span></figure></a><a aria-label="AI Video: go to project" class="cl" href="#ai-video"><figure class="card full"><img alt="Best AI visual from the AI Video project" data-k="6" decoding="async" fetchpriority="high" loading="eager" src="img-06.webp"/><span class="pill">AI Video</span></figure></a></div>
 </div></section>
 <section aria-label="Contents" class="slide" id="contents"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:190px">Contents</h2>
 <p class="lead abs mute" style="left:100px; top:330px; width:480px; font-size:30px">Six types of creative work, from fashion to motion.</p>
 <div class="abs" style="left:700px; top:170px; width:1124px"><a class="toc" href="#vittorio">
@@ -212,13 +227,13 @@ html,body{overflow-x:hidden}
 <div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>02</span></div>
 </div></section>
 <section aria-label="Profile" class="slide"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:285px; width:940px">Graphic design,<br/>extended with AI.</h2>
 <p class="lead abs" style="left:100px; top:640px; width:820px">Mohaned works across branding, social media, product advertising, AI-assisted visuals and motion content.</p>
-<img alt="Classical designer statue working at a digital creative workstation" class="abs" data-k="7" data-profile-hero="1" src="img-07.webp" style="right:78px; top:118px; height:860px; width:auto; object-fit:contain; z-index:2; filter:drop-shadow(0 24px 36px rgba(255,255,255,.055)) drop-shadow(0 18px 42px rgba(0,0,0,.55));"/><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>03</span></div>
+<img alt="Classical designer statue working at a digital creative workstation" class="abs" data-k="7" data-profile-hero="1" decoding="async" fetchpriority="low" loading="lazy" src="img-07.webp" style="right:78px; top:118px; height:860px; width:auto; object-fit:contain; z-index:2; filter:drop-shadow(0 24px 36px rgba(255,255,255,.055)) drop-shadow(0 18px 42px rgba(0,0,0,.55));"/><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>03</span></div>
 </div></section>
 <section aria-label="Creative workflow" class="slide"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:190px; width:1500px">From brief to final content.</h2>
 <div class="steps abs" style="left:96px; top:430px; width:1728px">
 <div class="step"><div class="n">01</div><div class="t">Brief</div></div>
@@ -234,113 +249,113 @@ html,body{overflow-x:hidden}
 </div></section>
 <section aria-label="Vittorio fashion branding and editorial motion" class="slide" id="vittorio">
 <div class="stage" style="background:#000; color:#F4F4F0">
-<div class="tile shift" style="right:auto; left:548px"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile shift" style="right:auto; left:548px"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <p class="abs mute" style="left:96px; top:96px; font-size:22px; font-weight:500; margin:0; letter-spacing:.02em">FASHION / BRANDING / VITTORIO</p>
 <h2 class="abs" style="left:96px; top:150px; width:540px; margin:0; font-size:84px; line-height:.95; letter-spacing:-.035em; font-weight:900; color:#F4F4F0; z-index:5">VITTORIO</h2>
 <p class="lead abs" style="left:100px; top:330px; width:500px; font-size:40px; line-height:1.2; margin:0; letter-spacing:-.015em; font-weight:500">Editorial direction brought into motion.</p>
 <p class="abs mute" style="left:100px; top:520px; width:500px; font-size:27px; line-height:1.4; margin:0">An AI-generated video designed to carry the brand’s personality, in the language of an editorial shoot.</p>
 <a class="abs" href="https://www.behance.net/gallery/244186105/Vittorio-Brand-Guidelines-Clothing-Brand" rel="noopener noreferrer" style="left:100px; top:730px; color:#F4F4F0; font-size:26px; text-decoration:none; border-bottom:1px solid rgba(244,244,240,.5); padding-bottom:5px" target="_blank">View the full project on Behance ↗</a>
-<video aria-label="Vittorio editorial motion cover" class="abs" controls="" loop="" muted="" playsinline="" poster="poster-01.jpg" preload="metadata" src="video-01.mp4" style="right:0; top:0; width:1280px; height:960px; object-fit:contain; background:#000"></video>
+<video aria-label="Vittorio editorial motion cover" class="abs" controls="" data-src="video-01.mp4" loop="" muted="" playsinline="" poster="poster-01.jpg" preload="none" style="right:0; top:0; width:1280px; height:960px; object-fit:contain; background:#000"></video>
 <div class="foot" style="right:1300px; z-index:10"><span>Mohaned Mohamed</span><span>05</span></div>
 </div>
 </section><section aria-label="EINS product advertising" class="slide" id="eins"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <p class="abs mute" style="left:96px; top:76px; font-size:20px; font-weight:500; margin:0; letter-spacing:.02em">PRODUCT ADVERTISING / EINS</p>
 <h2 class="abs" style="left:96px; top:118px; width:390px; margin:0; font-size:76px; line-height:.92; letter-spacing:-.035em; font-weight:900">
 One product.<br/>Many directions.
 </h2>
 <div class="abs" style="left:100px; top:500px; width:260px">
 <p class="mute" style="font-size:18px; font-weight:500; margin:0 0 14px">SOURCE ASSET</p>
-<img alt="Original EINS Hair Elixir product photo" data-k="8" src="img-08.jpg" style="width:210px; height:auto; max-height:350px; object-fit:contain"/>
+<img alt="Original EINS Hair Elixir product photo" data-k="8" decoding="async" fetchpriority="low" loading="lazy" src="img-08.webp" style="width:210px; height:auto; max-height:350px; object-fit:contain"/>
 </div>
 <p class="abs mute" style="left:505px; top:76px; font-size:20px; font-weight:500; margin:0; letter-spacing:.02em">AI VISUAL DEVELOPMENT</p>
-<img alt="EINS AI visual — product hero" class="abs" data-k="2" src="img-02.webp" style="left:505px; top:112px; width:545px; height:auto; max-height:730px; object-fit:contain"/>
-<img alt="EINS AI visual — model and two products" class="abs" data-k="9" src="img-09.jpg" style="left:1120px; top:112px; width:545px; height:auto; max-height:730px; object-fit:contain"/>
+<img alt="EINS AI visual — product hero" class="abs" data-k="2" decoding="async" fetchpriority="low" loading="lazy" src="img-02.webp" style="left:505px; top:112px; width:545px; height:auto; max-height:730px; object-fit:contain"/>
+<img alt="EINS AI visual — model and two products" class="abs" data-k="9" decoding="async" fetchpriority="low" loading="lazy" src="img-09.webp" style="left:1120px; top:112px; width:545px; height:auto; max-height:730px; object-fit:contain"/>
 <p class="abs mute" style="left:505px; top:880px; width:1160px; font-size:22px; line-height:1.25; margin:0">
 Same source asset. Different campaign directions — product-focused, model-led and lifestyle.
 </p>
 <div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>06</span></div>
 </div></section><section aria-label="EINS campaign directions" class="slide" id="eins-gallery"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:84px; margin:0">Campaign directions</h2>
 <p class="lead abs mute" style="left:96px; top:770px; width:1280px; font-size:24px; line-height:1.3; margin:0">One source asset, expanded into multiple campaign-ready visual stories.</p>
-<div class="abs" style="left:96px; top:300px; width:1728px; display:flex; gap:22px; align-items:flex-start; justify-content:flex-start"><img alt="EINS routine campaign visual" data-k="10" src="img-10.jpg" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS natural oils campaign visual" data-k="11" src="img-11.jpg" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS safety campaign visual" data-k="12" src="img-12.jpg" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS oil texture campaign visual" data-k="13" src="img-13.jpg" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS skincare model campaign visual" data-k="14" src="img-14.jpg" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>07</span></div>
+<div class="abs" style="left:96px; top:300px; width:1728px; display:flex; gap:22px; align-items:flex-start; justify-content:flex-start"><img alt="EINS routine campaign visual" data-k="10" decoding="async" fetchpriority="low" loading="lazy" src="img-10.webp" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS natural oils campaign visual" data-k="11" decoding="async" fetchpriority="low" loading="lazy" src="img-11.webp" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS safety campaign visual" data-k="12" decoding="async" fetchpriority="low" loading="lazy" src="img-12.webp" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS oil texture campaign visual" data-k="13" decoding="async" fetchpriority="low" loading="lazy" src="img-13.webp" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/><img alt="EINS skincare model campaign visual" data-k="14" decoding="async" fetchpriority="low" loading="lazy" src="img-14.webp" style="width:328px; height:410px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>07</span></div>
 </div></section><section aria-label="Manuela Clinic beauty clinic introduction" class="slide" id="beauty"><div class="stage">
-<img alt="Manuela Clinic high-quality beauty clinic visual with model and injectable treatment" class="abs" data-k="3" src="img-03.jpg" style="left:0; top:0; width:810px; height:1080px; object-fit:cover; object-position:center top"/>
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<img alt="Manuela Clinic high-quality beauty clinic visual with model and injectable treatment" class="abs" data-k="3" decoding="async" fetchpriority="low" loading="lazy" src="img-03.webp" style="left:0; top:0; width:810px; height:1080px; object-fit:cover; object-position:center top"/>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <div class="abs" style="left:960px; top:300px; width:864px"><h2 class="h-xl" style="margin:0; font-size:128px; line-height:.9; letter-spacing:-.055em">Manuela Clinic</h2><p class="h-m mute" style="margin:34px 0 0 8px; font-weight:500; letter-spacing:-.015em; font-size:54px; line-height:1">Beauty Clinic</p><p class="lead" style="margin:44px 0 0 8px; max-width:760px; font-size:31px; line-height:1.28">High-quality, model-led visuals across skin, injectables and hair treatments.</p></div>
 <div class="foot" style="left:968px; z-index:10"><span>Mohaned Mohamed</span><span>08</span></div>
 </div></section><section aria-label="Manuela Clinic beauty clinic campaign visuals" class="slide" id="beauty-gallery">
 <div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:84px; margin:0">Clinic visual directions</h2>
 <p class="lead abs mute" style="left:96px; top:775px; width:1280px; font-size:24px; line-height:1.3; margin:0">One premium clinic direction carried across skin, injectables and hair-treatment content.</p>
-<div class="abs" style="left:96px; top:290px; width:1728px; display:flex; gap:22px; align-items:flex-start; justify-content:flex-start"><img alt="Manuela Clinic skin injectable visual" data-k="3" src="img-03.jpg" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic cheek injectable beauty visual" data-k="15" src="img-15.jpg" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic facial treatment visual" data-k="16" src="img-16.jpg" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic exosome hair treatment visual" data-k="17" src="img-17.jpg" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic lifestyle brand visual" data-k="18" src="img-18.jpg" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>09</span></div>
+<div class="abs" style="left:96px; top:290px; width:1728px; display:flex; gap:22px; align-items:flex-start; justify-content:flex-start"><img alt="Manuela Clinic skin injectable visual" data-k="3" decoding="async" fetchpriority="low" loading="lazy" src="img-03.webp" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic cheek injectable beauty visual" data-k="15" decoding="async" fetchpriority="low" loading="lazy" src="img-15.webp" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic facial treatment visual" data-k="16" decoding="async" fetchpriority="low" loading="lazy" src="img-16.webp" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic exosome hair treatment visual" data-k="17" decoding="async" fetchpriority="low" loading="lazy" src="img-17.webp" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/><img alt="Manuela Clinic lifestyle brand visual" data-k="18" decoding="async" fetchpriority="low" loading="lazy" src="img-18.webp" style="width:328px; height:437px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>09</span></div>
 </div>
 </section><section aria-label="Sondos perfumes luxury introduction" class="slide" id="sondos-intro"><div class="stage">
-<img alt="Sondos luxury perfume campaign visual" class="abs" data-k="19" src="img-19.jpg" style="left:0; top:0; width:864px; height:1080px; object-fit:cover; object-position:center center"/>
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<img alt="Sondos luxury perfume campaign visual" class="abs" data-k="19" decoding="async" fetchpriority="low" loading="lazy" src="img-19.webp" style="left:0; top:0; width:864px; height:1080px; object-fit:cover; object-position:center center"/>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <div class="abs" style="left:960px; top:300px; width:864px"><h2 class="h-xl" style="margin:0; font-size:128px; line-height:.9; letter-spacing:-.055em">Sondos<br/>Perfumes</h2><p class="h-m mute" style="margin:34px 0 0 8px; font-weight:500; letter-spacing:-.015em; font-size:54px; line-height:1">Luxury Fragrance</p><p class="lead" style="margin:44px 0 0 8px; max-width:760px; font-size:31px; line-height:1.28">Premium fragrance visuals across four distinct perfume moods, unified through one elegant luxury direction.</p></div>
 <div class="foot" style="left:968px; z-index:10"><span>Mohaned Mohamed</span><span>10</span></div>
-</div></section><section aria-label="Sondos source assets" class="slide" id="sondos"><div class="stage"><div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div><p class="abs mute" style="left:96px; top:76px; font-size:20px; font-weight:500; margin:0; letter-spacing:.02em">PERFUME / LUXURY / SONDOS</p><h2 class="abs" style="left:96px; top:118px; margin:0; font-size:72px; line-height:1; letter-spacing:-.03em; font-weight:900">Source assets</h2><p class="abs mute" style="left:100px; top:215px; margin:0; font-size:26px; line-height:1.3; width:850px">The four original product shots before AI visual development.</p><div class="abs" style="left:96px; top:300px; width:1728px; display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; align-items:start"><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos ICE original product" data-k="20" src="img-20.jpg" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">ICE</p></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos FIRE original product" data-k="21" src="img-21.jpg" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">FIRE</p></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos BAREEQ original product" data-k="22" src="img-22.jpg" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">BAREEQ</p></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos ELIXIR original product" data-k="23" src="img-23.jpg" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">ELIXIR</p></div></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>11</span></div></div></section><section aria-label="Sondos final campaign visuals" class="slide" id="sondos-gallery"><div class="stage"><div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div><h2 class="h-l abs" style="left:96px; top:84px; margin:0">Final campaign visuals</h2><p class="lead abs mute" style="left:96px; top:830px; width:1280px; font-size:24px; line-height:1.3; margin:0">The same product order, reimagined across four distinct luxury fragrance moods.</p><div class="abs" style="left:96px; top:265px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Sondos ICE final AI campaign visual" data-k="4" src="img-04.jpg" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/><img alt="Sondos FIRE final AI campaign visual" data-k="24" src="img-24.jpg" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/><img alt="Sondos BAREEQ final AI campaign visual" data-k="25" src="img-25.jpg" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/><img alt="Sondos ELIXIR final AI campaign visual" data-k="19" src="img-19.jpg" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>12</span></div></div></section><section aria-label="Al Taybat" class="slide" id="food"><div class="stage">
-<img alt="AI-generated miniature scene: a waterfall of milk, workers pouring milk into a barrel, and an Al Taybat cheese tub" class="abs" data-k="26" src="img-26.jpg" style="left:0; top:0; height:1080px; width:auto"/>
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+</div></section><section aria-label="Sondos source assets" class="slide" id="sondos"><div class="stage"><div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div><p class="abs mute" style="left:96px; top:76px; font-size:20px; font-weight:500; margin:0; letter-spacing:.02em">PERFUME / LUXURY / SONDOS</p><h2 class="abs" style="left:96px; top:118px; margin:0; font-size:72px; line-height:1; letter-spacing:-.03em; font-weight:900">Source assets</h2><p class="abs mute" style="left:100px; top:215px; margin:0; font-size:26px; line-height:1.3; width:850px">The four original product shots before AI visual development.</p><div class="abs" style="left:96px; top:300px; width:1728px; display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; align-items:start"><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos ICE original product" data-k="20" decoding="async" fetchpriority="low" loading="lazy" src="img-20.webp" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">ICE</p></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos FIRE original product" data-k="21" decoding="async" fetchpriority="low" loading="lazy" src="img-21.webp" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">FIRE</p></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos BAREEQ original product" data-k="22" decoding="async" fetchpriority="low" loading="lazy" src="img-22.webp" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">BAREEQ</p></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:0"><div style="width:100%; height:440px; background:#fff; border-radius:16px; display:flex; align-items:center; justify-content:center; overflow:hidden"><img alt="Sondos ELIXIR original product" data-k="23" decoding="async" fetchpriority="low" loading="lazy" src="img-23.webp" style="max-width:84%; max-height:84%; width:auto; height:auto; object-fit:contain"/></div><p style="margin:22px 0 0; font-size:19px; font-weight:500; letter-spacing:.08em; color:var(--mute)">ELIXIR</p></div></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>11</span></div></div></section><section aria-label="Sondos final campaign visuals" class="slide" id="sondos-gallery"><div class="stage"><div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div><h2 class="h-l abs" style="left:96px; top:84px; margin:0">Final campaign visuals</h2><p class="lead abs mute" style="left:96px; top:830px; width:1280px; font-size:24px; line-height:1.3; margin:0">The same product order, reimagined across four distinct luxury fragrance moods.</p><div class="abs" style="left:96px; top:265px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Sondos ICE final AI campaign visual" data-k="4" decoding="async" fetchpriority="low" loading="lazy" src="img-04.webp" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/><img alt="Sondos FIRE final AI campaign visual" data-k="24" decoding="async" fetchpriority="low" loading="lazy" src="img-24.webp" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/><img alt="Sondos BAREEQ final AI campaign visual" data-k="25" decoding="async" fetchpriority="low" loading="lazy" src="img-25.webp" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/><img alt="Sondos ELIXIR final AI campaign visual" data-k="19" decoding="async" fetchpriority="low" loading="lazy" src="img-19.webp" style="width:414px; height:518px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>12</span></div></div></section><section aria-label="Al Taybat" class="slide" id="food"><div class="stage">
+<img alt="AI-generated miniature scene: a waterfall of milk, workers pouring milk into a barrel, and an Al Taybat cheese tub" class="abs" data-k="26" decoding="async" fetchpriority="low" loading="lazy" src="img-26.webp" style="left:0; top:0; height:1080px; width:auto"/>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-xl abs" style="left:752px; top:310px; width:1050px">Al Taybat</h2>
 <p class="h-m abs mute" style="left:756px; top:470px; font-weight:500; letter-spacing:-.015em">Food storytelling</p>
 <p class="lead abs" style="left:756px; top:640px; width:820px">A dairy product line turned into a miniature world of production.</p>
 <div class="foot" style="left:752px; z-index:10"><span>Mohaned Mohamed</span><span>13</span></div>
 </div></section>
 <section aria-label="Al Taybat keyframes" class="slide" id="taybat-keyframes"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:84px; margin:0">Keyframes</h2>
 <p class="lead abs mute" style="left:1240px; top:110px; width:520px; font-size:27px; line-height:1.28; margin:0">One world, kept consistent from scene to scene.</p>
-<div class="abs" style="left:96px; top:238px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Keyframe: workers cutting a block of white cheese beside wrapped Al Taybat packs" data-k="27" src="img-27.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: green Al Taybat cheddar box above a conveyor of cheese slices" data-k="28" src="img-28.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: blue Al Taybat box beside a river of milk and a wooden conveyor" data-k="29" src="img-29.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: the full Al Taybat product range on stone terraces" data-k="30" src="img-30.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>14</span></div>
+<div class="abs" style="left:96px; top:238px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Keyframe: workers cutting a block of white cheese beside wrapped Al Taybat packs" data-k="27" decoding="async" fetchpriority="low" loading="lazy" src="img-27.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: green Al Taybat cheddar box above a conveyor of cheese slices" data-k="28" decoding="async" fetchpriority="low" loading="lazy" src="img-28.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: blue Al Taybat box beside a river of milk and a wooden conveyor" data-k="29" decoding="async" fetchpriority="low" loading="lazy" src="img-29.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: the full Al Taybat product range on stone terraces" data-k="30" decoding="async" fetchpriority="low" loading="lazy" src="img-30.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>14</span></div>
 </div></section>
 <section aria-label="Al Taybat video" class="slide"><div class="stage">
-<div class="tile shift"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile shift"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:300px; width:1100px">From keyframes<br/>to video.</h2>
 <p class="lead abs" style="left:100px; top:560px; width:820px">The scenes carried into a branded video of about 30 seconds.</p>
-<video aria-label="Al Taybat AI video, about 30 seconds" class="vid abs" controls="" playsinline="" poster="poster-02.jpg" preload="metadata" src="video-02.mp4" style="right:0; top:0"></video>
+<video aria-label="Al Taybat AI video, about 30 seconds" class="vid abs" controls="" data-src="video-02.mp4" playsinline="" poster="poster-02.jpg" preload="none" style="right:0; top:0"></video>
 <div class="foot" style="right:704px; z-index:10"><span>Mohaned Mohamed</span><span>15</span></div>
 </div></section><section aria-label="Al Taybat second keyframes" class="slide" id="taybat-second-keyframes">
 <div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:84px; margin:0">Second keyframes</h2>
 <p class="lead abs mute" style="left:1250px; top:112px; width:570px; font-size:24px; line-height:1.3; margin:0">A second story direction built around school-lunch moments and a final product-line reveal.</p>
-<div class="abs" style="left:96px; top:250px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Keyframe: schoolboy placing a blue lunchbox into his backpack in a classroom" data-k="31" src="img-31.jpg" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: a lunchbox opened on a school desk, revealing a cheese sandwich and chips" data-k="32" src="img-32.jpg" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: schoolboy taking a bite of the cheese sandwich at his desk" data-k="33" src="img-33.jpg" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: dramatic cheese-pull close-up from a split sandwich in a classroom setting" data-k="34" src="img-34.jpg" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: Al Taybat product lineup on a classroom table with the green cheddar box hero in front" data-k="35" src="img-35.jpg" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>16</span></div>
+<div class="abs" style="left:96px; top:250px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Keyframe: schoolboy placing a blue lunchbox into his backpack in a classroom" data-k="31" decoding="async" fetchpriority="low" loading="lazy" src="img-31.webp" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: a lunchbox opened on a school desk, revealing a cheese sandwich and chips" data-k="32" decoding="async" fetchpriority="low" loading="lazy" src="img-32.webp" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: schoolboy taking a bite of the cheese sandwich at his desk" data-k="33" decoding="async" fetchpriority="low" loading="lazy" src="img-33.webp" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: dramatic cheese-pull close-up from a split sandwich in a classroom setting" data-k="34" decoding="async" fetchpriority="low" loading="lazy" src="img-34.webp" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/><img alt="Keyframe: Al Taybat product lineup on a classroom table with the green cheddar box hero in front" data-k="35" decoding="async" fetchpriority="low" loading="lazy" src="img-35.webp" style="width:326px; height:580px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>16</span></div>
 </div>
 </section><section aria-label="Al Taybat second video" class="slide">
 <div class="stage">
-<div class="tile shift"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile shift"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:300px; width:1100px">Second video.</h2>
 <p class="lead abs" style="left:100px; top:560px; width:820px">A second vertical cut, focused on the school-lunch story and ending with the wider Al Taybat range.</p>
-<video aria-label="Al Taybat second video about a school lunchbox, sandwich moments, and product reveal" class="vid abs" controls="" loop="" muted="" playsinline="" poster="poster-03.jpg" preload="metadata" src="video-03.mp4" style="right:0; top:0"></video>
+<video aria-label="Al Taybat second video about a school lunchbox, sandwich moments, and product reveal" class="vid abs" controls="" data-src="video-03.mp4" loop="" muted="" playsinline="" poster="poster-03.jpg" preload="none" style="right:0; top:0"></video>
 <div class="foot" style="right:704px; z-index:10"><span>Mohaned Mohamed</span><span>17</span></div>
 </div>
 </section>
 <section aria-label="ASA Suburb product" class="slide" id="ai-video"><div class="stage">
-<img alt="ASA Suburb spicy potato chips can on a red studio background with floating chips and chilis" class="abs" data-k="36" src="img-36.jpg" style="left:0; top:0; height:1080px; width:auto"/>
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<img alt="ASA Suburb spicy potato chips can on a red studio background with floating chips and chilis" class="abs" data-k="36" decoding="async" fetchpriority="low" loading="lazy" src="img-36.webp" style="left:0; top:0; height:1080px; width:auto"/>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-xl abs" style="left:752px; top:310px; width:1050px">ASA Suburb</h2>
 <p class="h-m abs mute" style="left:756px; top:470px; font-weight:500; letter-spacing:-.015em">Spicy Potato Chips</p>
 <p class="lead abs" style="left:756px; top:640px; width:820px">One product and one character, developed into a complete AI visual set.</p>
 <div class="foot" style="left:752px; z-index:10"><span>Mohaned Mohamed</span><span>18</span></div>
 </div></section>
 <section aria-label="Keyframes" class="slide" id="asa-keyframes"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:84px; margin:0">Keyframes</h2>
 <p class="lead abs mute" style="left:1240px; top:110px; width:520px; font-size:27px; line-height:1.28; margin:0">One character and one product, kept consistent across every scene.</p>
-<div class="abs" style="left:96px; top:238px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Keyframe 1: tiger holding a chip beside the product" data-k="37" src="img-37.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe 2: close-up of the tiger offering a chip" data-k="38" src="img-38.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe 3: tiger running through a burst of spice and chips" data-k="39" src="img-39.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe 4: tiger in a victory pose in a fire vortex" data-k="40" src="img-40.jpg" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>19</span></div>
+<div class="abs" style="left:96px; top:238px; width:1728px; display:flex; gap:24px; align-items:flex-start; justify-content:flex-start"><img alt="Keyframe 1: tiger holding a chip beside the product" data-k="37" decoding="async" fetchpriority="low" loading="lazy" src="img-37.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe 2: close-up of the tiger offering a chip" data-k="38" decoding="async" fetchpriority="low" loading="lazy" src="img-38.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe 3: tiger running through a burst of spice and chips" data-k="39" decoding="async" fetchpriority="low" loading="lazy" src="img-39.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/><img alt="Keyframe 4: tiger in a victory pose in a fire vortex" data-k="40" decoding="async" fetchpriority="low" loading="lazy" src="img-40.webp" style="width:392px; height:697px; object-fit:cover; border-radius:20px"/></div><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>19</span></div>
 </div></section>
 <section aria-label="In motion" class="slide"><div class="stage">
-<div class="tile shift"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile shift"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-xl abs" style="left:96px; top:300px">In motion.</h2>
 <p class="lead abs" style="left:100px; top:500px; width:820px">Visual direction, keyframe generation, consistency and refinement, carried into animated branded content.</p>
-<video aria-label="ASA Suburb AI video, 10 seconds" class="vid abs" controls="" playsinline="" poster="poster-04.jpg" preload="metadata" src="video-04.mp4" style="right:0; top:0"></video>
+<video aria-label="ASA Suburb AI video, 10 seconds" class="vid abs" controls="" data-src="video-04.mp4" playsinline="" poster="poster-04.jpg" preload="none" style="right:0; top:0"></video>
 <div class="foot" style="right:704px; z-index:10"><span>Mohaned Mohamed</span><span>20</span></div>
 </div></section>
 <section aria-label="Content capability" class="slide"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:190px">Beyond a single image.</h2>
 <div class="caps abs" style="left:96px; top:470px; width:1728px">
 <div class="cap">Static AI visuals</div>
@@ -353,13 +368,13 @@ Same source asset. Different campaign directions — product-focused, model-led 
 <div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>21</span></div>
 </div></section>
 <section aria-label="Online presence" class="slide"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:230px; width:1000px">Active across multiple creative platforms.</h2>
 <p class="lead abs" style="left:100px; top:660px; width:1000px">Mohaned is connected with a growing network of designers and creatives in Egypt who are actively exploring AI tools and modern creative workflows.</p>
-<img alt="Egypt creative network visual" class="abs network-egypt-visual" data-k="41" src="img-41.webp" style="right:72px; top:170px; width:650px; height:auto; object-fit:contain; opacity:.90; filter:drop-shadow(0 0 24px rgba(255,255,255,.08)); z-index:2"/><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>22</span></div>
+<img alt="Egypt creative network visual" class="abs network-egypt-visual" data-k="41" decoding="async" fetchpriority="low" loading="lazy" src="img-41.webp" style="right:72px; top:170px; width:650px; height:auto; object-fit:contain; opacity:.90; filter:drop-shadow(0 0 24px rgba(255,255,255,.08)); z-index:2"/><div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>22</span></div>
 </div></section>
 <section aria-label="Reach" class="slide" id="reach"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <h2 class="h-l abs" style="left:96px; top:190px; width:1500px">Where the work is seen.</h2>
 <div class="abs" style="left:96px; top:470px; width:1728px; display:grid; grid-template-columns:1fr 1fr; column-gap:96px">
 <div style="border-top:3px solid var(--ink); padding-top:30px">
@@ -376,13 +391,13 @@ Same source asset. Different campaign directions — product-focused, model-led 
 <div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>23</span></div>
 </div></section>
 <section aria-label="Egypt and MENA" class="slide"><div class="stage">
-<div class="tile"><img alt="Mohaned Design logo" data-k="0" src="img-00.png"/></div>
+<div class="tile"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png"/></div>
 <p class="h-m abs" style="left:96px; top:230px; width:1420px; font-size:72px">Designers in Egypt and the wider MENA region are increasingly interested in practical AI workflows that improve speed, consistency, and creative output.</p>
 <p class="lead abs mute" style="left:100px; top:690px; width:920px">Real projects, workflow breakdowns, experiments, and useful content can make new creative tools easier to understand and adopt.</p>
 <div class="foot" style="z-index:10"><span>Mohaned Mohamed</span><span>24</span></div>
 </div></section>
 <section aria-label="Contact" class="slide"><div class="stage">
-<div class="abs" style="left:96px; top:130px; width:200px; height:200px; border-radius:36px; background:#000; overflow:hidden; border:1px solid var(--tile-line)"><img alt="Mohaned Design logo" data-k="0" src="img-00.png" style="width:100%; height:100%; object-fit:contain"/></div>
+<div class="abs" style="left:96px; top:130px; width:200px; height:200px; border-radius:36px; background:#000; overflow:hidden; border:1px solid var(--tile-line)"><img alt="Mohaned Design logo" data-k="0" decoding="async" fetchpriority="low" loading="lazy" src="img-00.png" style="width:100%; height:100%; object-fit:contain"/></div>
 <h2 class="h-xl abs" style="left:96px; top:420px; font-size:136px">Mohaned<br/>Mohamed</h2>
 <p class="lead abs mute" style="left:100px; top:730px">Graphic Designer × AI Creative</p>
 <div class="abs" style="left:1000px; top:150px; width:824px">
@@ -395,7 +410,6 @@ Same source asset. Different campaign directions — product-focused, model-led 
 </div></section>
 </main>
 <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <div aria-hidden="true" aria-label="Image viewer" aria-modal="true" data-single="0" id="lb" role="dialog"><button aria-label="Close" class="lb-x">✕</button><button aria-label="Previous image" class="lb-p">‹</button><button aria-label="Next image" class="lb-n">›</button><img alt=""/><div class="lb-c"></div></div>
 <script>
 (function(){
@@ -403,7 +417,11 @@ Same source asset. Different campaign directions — product-focused, model-led 
   function fit(){
     var mobile=window.matchMedia && window.matchMedia('(max-width:900px)').matches;
     if(mobile){
-      var s=Math.min(window.innerWidth/1920, window.innerHeight/1080);
+      var side=12, topBottom=12;
+      var reserve=(window.innerWidth>window.innerHeight)?8:18;
+      var availW=Math.max(280,window.innerWidth-side*2);
+      var availH=Math.max(220,window.innerHeight-topBottom*2-reserve);
+      var s=Math.min(availW/1920, availH/1080);
       root.style.setProperty('--w', window.innerWidth+'px');
       root.style.setProperty('--s', s.toString());
     }else{
@@ -463,11 +481,21 @@ Same source asset. Different campaign directions — product-focused, model-led 
     if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault(); go(current()-1);}
   });
 
-  var vids=[].slice.call(document.querySelectorAll('video.vid'));
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(!x.isIntersecting) x.target.pause(); }); },{threshold:0.2});
-    vids.forEach(function(v){ io.observe(v); v.addEventListener('play',function(){ vids.forEach(function(o){ if(o!==v) o.pause(); }); }); });
+  var vids=[].slice.call(document.querySelectorAll('video'));
+  function hydrateVideo(v){
+    if(!v.getAttribute('src') && v.dataset && v.dataset.src){
+      v.setAttribute('src',v.dataset.src); v.preload='metadata'; v.load();
+    }
   }
+  if('IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(en){ en.forEach(function(x){
+      if(x.isIntersecting){ hydrateVideo(x.target); } else { try{x.target.pause();}catch(e){} }
+    }); },{threshold:0.01,rootMargin:'80% 0px'});
+    vids.forEach(function(v){ vio.observe(v); v.addEventListener('play',function(){ hydrateVideo(v); vids.forEach(function(o){ if(o!==v) o.pause(); }); }); });
+  }else{ vids.forEach(hydrateVideo); }
+
+  
+  document.addEventListener('pointerdown',function(e){ var v=e.target&&e.target.closest&&e.target.closest('video'); if(v) hydrateVideo(v); },{passive:true});
 
   window.addEventListener('load', function(){
     var wrap=document.getElementById('qrwrap'), cap=wrap.nextElementSibling;
